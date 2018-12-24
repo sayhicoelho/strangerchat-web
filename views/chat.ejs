@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Strangerchat</title>
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+  <div class="input-group">
+    <input type="text" id="message" placeholder="type here..." disabled>
+    <button id="send" disabled>send</button>
+  </div>
+
+  <button id="disconnect" disabled>disconnect</button>
+
+  <div id="messages">
+    <section>
+      <strong id="connection">Connecting...</strong>
+    </section>
+    <section id="typing" style="display: none">
+      <strong>typing...</strong>
+    </section>
+  </div>
+
+  <script src="/js/socket.io.slim.js"></script>
+  <script src="/js/chat.js"></script>
+</body>
+</html>
