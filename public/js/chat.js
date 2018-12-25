@@ -50,6 +50,7 @@
 
   socket.on('message', message => {
     writeMessage('stranger', message)
+    toggleTyping('none')
   })
 
   socket.on('typing', () => {
@@ -143,8 +144,6 @@
     section.appendChild(p)
 
     messagesElement.insertBefore(section, messagesElement.childNodes[messagesElement.childElementCount])
-
-    toggleTyping('none')
 
     scrollDown()
   }
