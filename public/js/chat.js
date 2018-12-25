@@ -34,6 +34,8 @@
 
   sendButton.addEventListener('click', e => {
     sendMessage()
+
+    messageElement.focus()
   })
 
   disconnectButton.addEventListener('click', e => {
