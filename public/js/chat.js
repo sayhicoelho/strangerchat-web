@@ -184,6 +184,8 @@
 
     delete window.localStorage.room
 
+    messageElement.value = ''
+
     scrollDown()
   }
 
@@ -191,7 +193,6 @@
     disconnectButton.disabled = true
     sendButton.disabled = true
     messageElement.disabled = true
-    messageElement.value = ''
   }
 
   function enableElements() {
