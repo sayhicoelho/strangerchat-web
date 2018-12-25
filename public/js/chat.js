@@ -77,7 +77,7 @@
       connect(window.localStorage.room)
     } else {
       connectionElement.textContent = 'You are alone.'
-      writeMessage('server', 'Ooops! Looks like stranger is gone. You are encouraged to get new chat.')
+      writeMessage('server', 'Ooops! Looks like the stranger is gone. You are encouraged to start a new conversation.')
       disableElements()
       disconnectButton.disabled = false
     }
