@@ -147,4 +147,9 @@ input:disabled {
     transform: translateX(-50%);
     bottom: 20px;
   }
+
+  #scrolldown-arrow {
+    bottom: 90px;
+    right: calc(25% + 14px);
+  }
 }
