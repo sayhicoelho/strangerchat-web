@@ -32,10 +32,6 @@
     }
   })
 
-  messageElement.addEventListener('focus', e => {
-    scrollDown()
-  })
-
   sendButton.addEventListener('click', e => {
     sendMessage()
 
