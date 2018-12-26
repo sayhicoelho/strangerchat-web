@@ -79,7 +79,6 @@
     } else {
       connectionElement.textContent = 'You are alone.'
       writeMessage('server', 'Ooops! Looks like the stranger is gone. You are encouraged to start a new conversation.')
-      disableElements()
       disconnectButton.disabled = false
     }
   })
@@ -106,8 +105,6 @@
   })
 
   socket.on('connect', () => {
-    enableElements()
-
     if (init) {
       writeMessage('server', 'Reconnected.')
       socket.emit('join', window.localStorage.room)
