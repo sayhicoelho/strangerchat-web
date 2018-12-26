@@ -111,6 +111,25 @@ input:disabled {
   color: darkgray;
 }
 
+#scrolldown-arrow {
+  position: fixed;
+  bottom: 70px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  color: black;
+  border: 0;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 100ms;
+}
+
+#scrolldown-arrow:hover,
+#scrolldown-arrow:focus {
+  background-color: lightgray;
+}
+
 @media (min-width: 1024px) {
   body {
     margin-bottom: 92px;

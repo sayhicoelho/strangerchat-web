@@ -7,6 +7,7 @@
   const disconnectButton = document.getElementById('disconnect')
   const connectionElement = document.getElementById('connection')
   const typingElement = document.getElementById('typing')
+  const scrollDownArrowElement = document.getElementById('scrolldown-arrow')
 
   let init = false
   let typing = false
@@ -42,6 +43,14 @@
     ensureDisconnection()
   })
 
+  scrollDownArrowElement.addEventListener('click', e => {
+    scrollDown(true)
+  })
+
+  window.addEventListener('scroll', e => {
+    scrollDownArrowElement.style.display = isScrollBottom() ? 'none' : ''
+  })
+
   socket.on('message', message => {
     writeMessage('stranger', message)
     toggleTyping('none')
@@ -56,7 +65,7 @@
       toggleTyping('none')
     }, typingTimeout + 1000)
 
-    scrollDown()
+    scrollDownIfBottom()
   })
 
   socket.on('pending', () => {
@@ -136,7 +145,7 @@
 
     messagesElement.insertBefore(section, messagesElement.childNodes[messagesElement.childElementCount])
 
-    scrollDown()
+    scrollDownIfBottom()
   }
 
   function sendMessage() {
@@ -215,7 +224,36 @@
     typingElement.style.display = display
   }
 
-  function scrollDown() {
-    window.scroll(0, document.body.offsetHeight)
+  function scrollDownIfBottom() {
+    if (isScrollBottom()) {
+      scrollDown()
+    }
+  }
+
+  function scrollDown(animate) {
+    if (animate) {
+      window.scroll({
+        left: 0,
+        top: document.body.offsetHeight,
+        behavior: 'smooth'
+      })
+    } else {
+      window.scroll(0, document.body.offsetHeight)
+    }
+  }
+
+  function isScrollBottom() {
+    return (window.innerHeight + window.scrollY + 25) >= getAbsoluteHeight(document.body)
+  }
+
+  function getAbsoluteHeight(el) {
+    // Get the DOM Node if you pass in a string
+    el = (typeof el === 'string') ? document.querySelector(el) : el;
+
+    const styles = window.getComputedStyle(el)
+    const margin = parseFloat(styles['marginTop']) +
+      parseFloat(styles['marginBottom'])
+
+    return Math.ceil(el.offsetHeight + margin)
   }
 })()
