@@ -43,9 +43,7 @@
   })
 
   disconnectButton.addEventListener('click', e => {
-    socket.emit('leave', window.localStorage.room)
-
-    disconnect()
+    ensureDisconnection()
   })
 
   socket.on('message', message => {
@@ -157,6 +155,14 @@
 
       clearTimeout(sendingTypingTimer)
       typing = false
+    }
+  }
+
+  function ensureDisconnection() {
+    if (confirm('Are you sure?')) {
+      socket.emit('leave', window.localStorage.room)
+
+      disconnect()
     }
   }
 
